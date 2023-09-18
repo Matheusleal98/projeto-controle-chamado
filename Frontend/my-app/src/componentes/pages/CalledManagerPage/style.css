@@ -1,0 +1,30 @@
+.form {
+    width: 100%;
+}
+
+.form-group {
+    margin-top: 15px;
+
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #ced4da;
+    padding-left: 10px;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+
+}
+
+.form .actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+}
