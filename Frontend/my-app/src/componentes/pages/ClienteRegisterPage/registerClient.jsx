@@ -1,7 +1,7 @@
 // import { useParams } from "react-router-dom";
 import "./style.css"
-import React, { useEffect, useState } from 'react';
-import {Navigate, Link, useParams} from "react-router-dom";
+import React, { useState } from 'react';
+import {Navigate, Link} from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ClientRegister = () => {
@@ -25,7 +25,7 @@ const ClientRegister = () => {
         let urlEndpoint;
 
         methodEndpoint = "POST";
-        urlEndpoint = `http://localhost:8080/client/save`;
+        urlEndpoint = `http://localhost:8080/called/client/save`;
 
         fetch(urlEndpoint, {
             method: methodEndpoint,
