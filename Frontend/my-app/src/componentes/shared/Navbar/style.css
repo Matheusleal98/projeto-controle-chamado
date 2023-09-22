@@ -19,6 +19,23 @@
     list-style: none;
     padding-left: 10px;
     padding-right: 10px;
+    display: flex;
+}
+
+.main-nav .nav-links .icon-add {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+}
+
+.main-nav .nav-links .icon-add:hover {
+    background-color: #0d6efd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.main-nav .nav-links .icon-add {
+    color: white;
 }
 
 .main-nav .nav-links a.nav-item {
@@ -27,9 +44,4 @@
     padding: 5px;
     display: block;
     border-radius: 5px;
-}
-
-.main-nav .nav-links a.nav-item:hover {
-    background-color: #0d6efd;
-    display: block;
 }
