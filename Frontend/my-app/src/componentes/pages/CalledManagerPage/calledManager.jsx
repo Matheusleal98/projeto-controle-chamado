@@ -11,7 +11,7 @@ const CalledManager = () => {
     const [isRedirect, setIsRedirect] = useState(false);
     const [isLoading, updateIsLoading] = useState(false)
     
-    const [nomeCliente, updateNameCliente] = useState("");
+    const [cliente, updateCliente] = useState("");
     const [assunto, updateAssunto] = useState("");
     const [descricao, updateDescricao] = useState("");
     const [atendente, updateUsuario] = useState("");
@@ -28,7 +28,7 @@ const CalledManager = () => {
                 return response.json();
             })
             .then((data) => {
-                updateNameCliente(data.nomeCliente);
+                updateCliente(data.cliente.email);
                 updateAssunto(data.assunto);
                 updateDescricao(data.descricao);
                 updateUsuario(data.atendente);
@@ -47,13 +47,13 @@ const CalledManager = () => {
     const onSubmitForm = (event) => {
         event.preventDefault();
         const body = {
-            nomeCliente,
+            cliente,
             assunto,
             descricao,
             atendente,
             status
         };
-
+ 
         /* PARAMÊTROS */
         let methodEndpoint;
         let urlEndpoint;
@@ -117,11 +117,11 @@ const CalledManager = () => {
                         onSubmit={onSubmitForm}
                     >
                         <div className="form-group">
-                            <label htmlFor="name">Nome do cliente:</label>
-                            <input required type="text" name="name" id="name"
-                                   value={nomeCliente}
+                            <label htmlFor="name">Email do cliente:</label>
+                            <input required type="Email" name="email" id="email"
+                                   value={cliente}
                                    onChange={(event) => {
-                                       updateNameCliente(event.target.value);
+                                       updateCliente(event.target.value);
                                    }}
                             />
                         </div>

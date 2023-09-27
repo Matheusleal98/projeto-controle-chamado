@@ -41,17 +41,17 @@ class CallListPage extends React.Component {
     };
 
     deleteCalled = (codigo) => {
-        this.state({isLoading: true});
+        // this.state({isLoading: true});
         fetch(`http://localhost:8080/calleds/delete/${codigo}`, {
             method: "DELETE",
         })
-        .then((response) => {
-            return response.json();
-        })
+        // .then((response) => {
+        //     // return response.json();
+        // })
         .then((data) => {
             Swal.fire({
                 icon: 'success',
-                title: 'Excluído com sucesso!',
+                title: `Excluído com sucesso!`,
                 text: 'Excluído com sucesso!',
                 showConfirmButton: false,
             })
@@ -60,21 +60,30 @@ class CallListPage extends React.Component {
     }  
     
     fetchCalledList = () => {
-        // this.state({isLoading: true})
-        fetch(`http://localhost:8080/calleds/list`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                this.setState({
-                    calledsList: data,
-                    isLoading: false,
-                });
-            })
-            .catch((error) => {
-                console.log(error)
+    fetch(`http://localhost:8080/calleds/list`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            // Formatando a data
+            const formattedData = data.map((item) => {
+                const date = new Date(item.dataHora);
+                const formattedDate = date.toLocaleDateString(); // Ou qualquer outro formato desejado
+                return {
+                    ...item,
+                    dataHora: formattedDate,
+                };
             });
-    }
+
+            this.setState({
+                calledsList: formattedData,
+                isLoading: false,
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
     
     render(){
         // if (this.state.isLoading) {
@@ -109,7 +118,7 @@ class CallListPage extends React.Component {
                                             return (
                                                 <tr key={calleds.id}>
                                                     <td>{calleds.id}</td>
-                                                    <td>{calleds.nomeCliente}</td>
+                                                    <td>{calleds.cliente.nome}</td>
                                                     <td>{calleds.assunto}</td>
                                                     <td>{calleds.status}</td>
                                                     <td>{calleds.atendente}</td>
